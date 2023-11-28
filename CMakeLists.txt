@@ -17,8 +17,6 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS 
     include
-  LIBRARIES 
-    ${PROJECT_NAME}_library
   CATKIN_DEPENDS
     roscpp
     grid_map_core
@@ -46,6 +44,7 @@ include_directories(
 ################
 
 add_executable(elevation_map_loader_node src/map_loader_node.cpp
+  src/elevation_map_loader/MapLoader.cpp
   src/occupancy_map/OccupancyGridMap.cpp
   src/occupancy_map/OccupancyGridMapHelper.cpp
   src/occupancy_map/OccupancyGridMapRosConverter.cpp
