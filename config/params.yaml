@@ -1,0 +1,57 @@
+## Frame Ids
+FrameIds:
+  map: "map"
+  odom: "odom"
+  base: "base_link"
+
+## Global Planner Params
+global_planner:
+  SubscribedTopic: 
+    goal: "/move_base_simple/goal"
+  PublishingTopic:
+    path: "path"
+  NodeTimer:
+    visualizationDuration: 2.0
+  OccupancyMap:
+    pathToImage: $(find elevation_map_loader)/config/sample.png
+    gridResolution: 0.1
+    freeThreshold: 0.3
+    occupiedThreshold: 0.50
+    inflationLength: 0.5
+  GridSearch:
+    searchUnknownRegion: false  # Set false for faster planning
+
+OccupancyMap:
+  PathToImage: $(find elevation_map_loader)/config/sample.png
+  GridResolution: 0.1
+  OccupiedThreshold: 0.7
+  FreeThreshold: 0.2
+
+## Local Planner Params
+Robot:
+  MaxLinearVelocity: 1.0
+  MaxAngularVelocity: 1.2
+  FootprintRadius: 0.5
+
+controller:
+  SubscribedTopic:
+    localGoal: "/move_base_simple/goal" # TODO: subscribe local goal from waypoint handler
+    localMap: "cloud_processor/cloud_processed" # Set point cloud topic
+    odom: "/odom"
+  PublishingTopic:
+    cmdVel: "/cmd_vel"
+    trajectory: "trajectory"
+    trajectoryBubble: "trajectory_bubble"
+  NodeTimer:
+    controlDuration: 0.01
+  DynamicWindow:
+    resolution: 0.04
+    dt: 0.3  # determines size
+  DWA:
+    timeHorizon: 3.0
+    weightLinearVelWindow: 1.0
+    weightTargetDistanceWindow: 1.0
+    weightTargetHeadingWindow: 1.0
+    disableBackwardMotion: true
+
+
