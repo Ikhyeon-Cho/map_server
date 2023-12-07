@@ -11,10 +11,10 @@
 #define MAP_LOADER_H
 
 #include <ros/ros.h>
-#include <isr_ros_utils/core/utils.h>
-#include "occupancy_map/OccupancyGridMap.h"
-#include "occupancy_map/OccupancyGridMapHelper.h"
-#include "occupancy_map/OccupancyGridMapRosConverter.h"
+#include <ros_node_utils/Core.h>
+#include <occupancy_grid_map/OccupancyGridMap.h>
+#include <occupancy_grid_map/OccupancyGridMapHelper.h>
+#include <occupancy_grid_map/OccupancyGridMapRosConverter.h>
 
 class MapLoader
 {

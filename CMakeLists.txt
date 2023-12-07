@@ -4,14 +4,8 @@ add_compile_options(-std=c++14)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  grid_map_core
-  grid_map_ros
-  grid_map_msgs
-  nav_msgs
-  tf
-  tf2_ros
-  ddynamic_reconfigure
-  isr_ros_utils
+  ros_node_utils
+  occupancy_grid_map
 )
 
 catkin_package(
@@ -19,14 +13,8 @@ catkin_package(
     include
   CATKIN_DEPENDS
     roscpp
-    grid_map_core
-    grid_map_ros
-    grid_map_msgs
-    nav_msgs
-    tf
-    tf2_ros
-    ddynamic_reconfigure
-    isr_ros_utils
+    ros_node_utils
+    occupancy_grid_map
 )
 
 ###########
@@ -45,9 +33,6 @@ include_directories(
 
 add_executable(elevation_map_loader_node src/map_loader_node.cpp
   src/elevation_map_loader/MapLoader.cpp
-  src/occupancy_map/OccupancyGridMap.cpp
-  src/occupancy_map/OccupancyGridMapHelper.cpp
-  src/occupancy_map/OccupancyGridMapRosConverter.cpp
 )
 target_link_libraries(elevation_map_loader_node
   ${catkin_LIBRARIES}
