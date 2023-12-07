@@ -18,18 +18,18 @@ MapLoader::MapLoader()
 
 void MapLoader::readOccupancyMapFromImage()
 {
-  cv::Mat image = cv::imread(image_path.value());
+  cv::Mat image = cv::imread(image_path.param());
   if (image.empty())
   {
     // should do something
   }
 
-  if (!OccupancyGridMapHelper::initializeFromImage(image, grid_map_resolution.value(), occupancy_map_))
+  if (!OccupancyGridMapHelper::initializeFromImage(image, grid_map_resolution.param(), occupancy_map_))
   {
     // should do something
   }
 
-  OccupancyGridMapHelper::applyBinaryThreshold(occupancy_free_threshold.value(), occupancy_occupied_threshold.value(),
+  OccupancyGridMapHelper::applyBinaryThreshold(occupancy_free_threshold.param(), occupancy_occupied_threshold.param(),
                                                occupancy_map_);
 }
 
