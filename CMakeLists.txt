@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(elevation_map_loader)
+project(elevationmap_server)
 add_compile_options(-std=c++14)
 
 find_package(catkin REQUIRED COMPONENTS
@@ -31,9 +31,9 @@ include_directories(
 ## Executable ##
 ################
 
-add_executable(elevation_map_loader_node src/map_loader_node.cpp
-  src/elevation_map_loader/MapLoader.cpp
+add_executable(elevationmap_server_node src/map_server_node.cpp
+  src/elevationmap_server/MapServer.cpp
 )
-target_link_libraries(elevation_map_loader_node
+target_link_libraries(elevationmap_server_node
   ${catkin_LIBRARIES}
 )

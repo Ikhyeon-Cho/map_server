@@ -1,0 +1,13 @@
+<launch>
+  <!-- Parameters -->
+  <rosparam file="$(find elevationmap_server)/config/params.yaml" command="load" subst_value="true" />
+
+  <!-- Map Lodaer -->
+  <node pkg="elevationmap_server" type="elevationmap_server_node" name="elevationmap_server" output="screen" />
+
+  <!-- Rviz -->
+  <!-- <node pkg="rviz" type="rviz" name="rviz_occupancy_map_server" args="-d $(find elevationmap_server)/rviz/occupancy_map_server.rviz" /> -->
+
+  <!-- RQT -->
+  <node pkg="rqt_gui" type="rqt_gui" name="rqt" args="--perspective-file $(find elevationmap_server)/rviz/rviz.perspective" />
+</launch>

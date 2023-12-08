@@ -1,5 +1,5 @@
 /*
- * map_loader_node.cpp
+ * map_server_node.cpp
  *
  *  Created on: Nov 23, 2023
  *      Author: Ikhyeon Cho
@@ -8,14 +8,14 @@
  */
 
 #include <ros/ros.h>
-#include "elevation_map_loader/MapLoader.h"
+#include "elevationmap_server/MapServer.h"
 
 int main(int argc, char** argv)
 {
-  ros::init(argc, argv, "elevation_map_loader_node");
+  ros::init(argc, argv, "elevationmap_server_node");
   ros::NodeHandle nh("~");
 
-  MapLoader node;
+  ros::MapServer node;
 
   ros::Rate loop_rate(1);
   while (ros::ok())

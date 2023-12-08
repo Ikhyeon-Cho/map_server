@@ -1,5 +1,5 @@
 /*
- * MapLoader.cpp
+ * MapServer.cpp
  *
  *  Created on: Nov 23, 2023
  *      Author: Ikhyeon Cho
@@ -7,35 +7,41 @@
  *       Email: tre0430@korea.ac.kr
  */
 
-#include "elevation_map_loader/MapLoader.h"
+#include "elevationmap_server/MapServer.h"
 
-MapLoader::MapLoader()
+namespace ros
+{
+MapServer::MapServer()
 {
   readOccupancyMapFromImage();
 
   visualization_timer_occupancy.start();
 }
 
-void MapLoader::readOccupancyMapFromImage()
+void MapServer::readOccupancyMapFromImage()
 {
   cv::Mat image = cv::imread(image_path.param());
   if (image.empty())
   {
-    // should do something
+    std::cout << "Reading map failed \n";
+    return;
   }
 
   if (!OccupancyGridMapHelper::initializeFromImage(image, grid_map_resolution.param(), occupancy_map_))
   {
-    // should do something
+    std::cout << "converting from image to map failed \n";
+    return;
   }
 
   OccupancyGridMapHelper::applyBinaryThreshold(occupancy_free_threshold.param(), occupancy_occupied_threshold.param(),
                                                occupancy_map_);
 }
 
-void MapLoader::visualizeOccupancyMap(const ros::TimerEvent& event)
+void MapServer::visualizeOccupancyMap(const ros::TimerEvent& event)
 {
   nav_msgs::OccupancyGrid msg;
   OccupancyGridMapRosConverter::toOccupancyGridMsg(occupancy_map_, msg);
   occupancy_map_publisher.publish(msg);
 }
+
+}  // namespace ros

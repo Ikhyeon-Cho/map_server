@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>elevation_map_loader</name>
+  <name>elevationmap_server</name>
   <version>0.0.0</version>
   <description>ROS map server based on elevation map</description>
   <maintainer email="tre0430@korea.ac.kr">Ikhyeon Cho</maintainer>

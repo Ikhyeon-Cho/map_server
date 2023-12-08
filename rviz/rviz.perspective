@@ -110,7 +110,7 @@
                   "type": "repr"
                 },
                 "rviz_config_file": {
-                  "repr": "'/home/isr/ros/dev_ws/src/elevation_map_loader/rviz/occupancy_map_server.rviz'",
+                  "repr": "'/home/isr/ros/dev_ws/src/elevationmap_server/rviz/occupancy_map_server.rviz'",
                   "type": "repr"
                 }
               },
