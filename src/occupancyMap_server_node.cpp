@@ -8,14 +8,14 @@
  */
 
 #include <ros/ros.h>
-#include "elevationmap_server/MapServer.h"
+#include "occupancyMap_server/OccupancyMapServer.h"
 
 int main(int argc, char** argv)
 {
-  ros::init(argc, argv, "elevationmap_server_node");
+  ros::init(argc, argv, "occupancyMap_server_node");
   ros::NodeHandle nh("~");
 
-  ros::MapServer node;
+  ros::OccupancyMapServer node;
 
   ros::Rate loop_rate(1);
   while (ros::ok())

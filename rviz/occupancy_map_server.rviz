@@ -57,7 +57,7 @@ Visualization Manager:
       Draw Behind: false
       Enabled: true
       Name: Map
-      Topic: /elevationmap_server/topic
+      Topic: /map
       Unreliable: false
       Use Timestamp: false
       Value: true

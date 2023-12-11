@@ -1,5 +1,12 @@
 OccupancyMap:
-  PathToImage: $(find elevationmap_server)/config/sample.png
   GridResolution: 0.1
   FreeThreshold: 0.3
   OccupiedThreshold: 0.7
+
+occupancyMap_server_node:
+  Published_Topics:
+    map: "/map"
+  
+  Parameters:
+    image_path: $(find map_server)/config/sample.png
+    grid_resolution: 0.1

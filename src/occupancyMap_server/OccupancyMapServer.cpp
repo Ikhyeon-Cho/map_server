@@ -1,5 +1,5 @@
 /*
- * MapServer.cpp
+ * OccupancyMapServer.cpp
  *
  *  Created on: Nov 23, 2023
  *      Author: Ikhyeon Cho
@@ -7,18 +7,18 @@
  *       Email: tre0430@korea.ac.kr
  */
 
-#include "elevationmap_server/MapServer.h"
+#include "occupancyMap_server/OccupancyMapServer.h"
 
 namespace ros
 {
-MapServer::MapServer()
+OccupancyMapServer::OccupancyMapServer()
 {
   readOccupancyMapFromImage();
 
   visualization_timer_occupancy.start();
 }
 
-void MapServer::readOccupancyMapFromImage()
+void OccupancyMapServer::readOccupancyMapFromImage()
 {
   cv::Mat image = cv::imread(image_path.param());
   if (image.empty())
@@ -27,7 +27,7 @@ void MapServer::readOccupancyMapFromImage()
     return;
   }
 
-  if (!OccupancyGridMapHelper::initializeFromImage(image, grid_map_resolution.param(), occupancy_map_))
+  if (!OccupancyGridMapHelper::initializeFromImage(image, grid_resolution.param(), occupancy_map_))
   {
     std::cout << "converting from image to map failed \n";
     return;
@@ -37,7 +37,7 @@ void MapServer::readOccupancyMapFromImage()
                                                occupancy_map_);
 }
 
-void MapServer::visualizeOccupancyMap(const ros::TimerEvent& event)
+void OccupancyMapServer::visualizeOccupancyMap(const ros::TimerEvent& event)
 {
   nav_msgs::OccupancyGrid msg;
   OccupancyGridMapRosConverter::toOccupancyGridMsg(occupancy_map_, msg);
