@@ -8,5 +8,5 @@ occupancyMap_server_node:
     map: "/map"
   
   Parameters:
-    image_path: $(find map_server)/config/sample.png
+    image_path: $(find elevation_map_server)/config/sample.png
     grid_resolution: 0.1
