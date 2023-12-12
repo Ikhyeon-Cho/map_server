@@ -1,12 +1,11 @@
-OccupancyMap:
-  GridResolution: 0.1
-  FreeThreshold: 0.3
-  OccupiedThreshold: 0.7
-
 occupancyMap_server_node:
   Published_Topics:
     map: "/map"
-  
+
   Parameters:
+    ## Occupancy Map
     image_path: $(find elevation_map_server)/config/sample.png
     grid_resolution: 0.1
+    occupancy_free_threshold: 0.3
+    occupancy_occupied_threshold: 0.7
+    map_visualization_duration: 2.0

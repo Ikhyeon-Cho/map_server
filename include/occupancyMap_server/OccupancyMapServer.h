@@ -35,15 +35,18 @@ public:
   // -- Occupancy Map
   roscpp::Parameter<std::string> image_path{ "~/Parameters/image_path", "/home/isr" };
   roscpp::Parameter<double> grid_resolution{ "~/Parameters/grid_resolution", 0.1 };
-  roscpp::Parameter<double> occupancy_free_threshold{ "~/Parameters/FreeThreshold", 0.3 };
-  roscpp::Parameter<double> occupancy_occupied_threshold{ "~/Parameters/OccupiedThreshold", 0.7 };
+  roscpp::Parameter<double> occupancy_free_threshold{ "~/Parameters/occupancy_free_threshold", 0.3 };
+  roscpp::Parameter<double> occupancy_occupied_threshold{ "~/Parameters/occupancy_occupied_threshold", 0.7 };
 
-  // ROS Things
-  roscpp::Publisher<nav_msgs::OccupancyGrid> occupancy_map_publisher{ map_topic.param() };
-  roscpp::Timer visualization_timer_occupancy{ ros::Duration(2.0), &OccupancyMapServer::visualizeOccupancyMap, this };
+  // -- Duration
+  roscpp::Parameter<double> map_visualization_duration{ "~/Parameters/map_visualization_duration", 2.0 };
 
 private:
   OccupancyGridMap occupancy_map_;
+
+  roscpp::Publisher<nav_msgs::OccupancyGrid> occupancy_map_publisher{ map_topic.param() };
+  roscpp::Timer visualization_timer_occupancy{ map_visualization_duration.param(),
+                                               &OccupancyMapServer::visualizeOccupancyMap, this };
 };
 
 }  // namespace ros
