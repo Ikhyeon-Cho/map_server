@@ -1,0 +1,17 @@
+<launch>
+
+  <arg name="package" value="elevation_map_server" />
+  <arg name="package_dir" value="$(find elevation_map_server)" />
+
+  <!-- Launch -->
+  <include file="$(arg package_dir)/launch/occupancy_map_server.launch" />
+
+  <!-- Rviz -->
+  <!-- <node pkg="rviz" type="rviz" name="rviz_occupancy_map_server" args="-d $(find
+  elevation_map_server)/rviz/occupancy_map_server.rviz" /> -->
+
+  <!-- RQT -->
+  <node pkg="rqt_gui" type="rqt_gui" name="rqt"
+    args="--perspective-file $(find elevation_map_server)/rviz/rviz.perspective" />
+
+</launch>
